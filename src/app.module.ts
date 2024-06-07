@@ -13,9 +13,10 @@ export class AppModule {
     consumer
       .apply(AppMiddleware)
       .exclude(
-        // { path: '/all', method: RequestMethod.GET },
-        { path: '/:id', method: RequestMethod.GET },
+        { path: 'all', method: RequestMethod.GET },
+        { path: '/:id(\\d+)', method: RequestMethod.GET },
       )
+      // .exclude({ path: '/:id(\\d+)', method: RequestMethod.GET })
       .forRoutes(AppController);
   }
 }
